@@ -75,7 +75,7 @@ for URL in URLS:
         objs.append(ds)
 
 
-pd.concat(objs).sort_values('番号').to_csv(datetime.now().strftime("%Y-%m-%d-%H-%M") + 'result.csv', index=False)
+pd.concat(objs).sort_values('番号').to_csv('result/' + datetime.now().strftime("%Y-%m-%d-%H-%M") + 'result.csv', index=False)
     
 
 
