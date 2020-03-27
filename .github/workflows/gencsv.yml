@@ -3,7 +3,7 @@ name: Python exec
 on:
   schedule:
     - cron:  '0 * * * *'
-    - push:
+  push:
 
 
 jobs:
