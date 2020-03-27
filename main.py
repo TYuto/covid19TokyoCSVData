@@ -14,7 +14,7 @@ PRESS_SEARCH_URL='https://search.metro.tokyo.lg.jp/?ie=u&kw=%E6%96%B0%E5%9E%8B%E
 RESULT_NUM_XPATH = '//*[@id="search_contents"]/div[1]/span[2]/text()'
 URL_PATH='//*[@id="search_contents"]/div[{}]/a/div/div[3]/text()'
 
-OUT_COLUMNS = ['num', 'age', 'travelHistory', 'symptoms', 'sex', 'profession', 'note', 'source']
+OUT_COLUMNS= ['番号', '年代', '渡航歴', '接触歴', '症状', '性別', '居住地', '発症日', '職業', '備考', 'リンク']
 
 USE_CACHE = True
 
@@ -61,7 +61,7 @@ for URL in URLS:
         if d.get('番号') is None:
             continue
         
-        rows = [{'keys': ['番号']}, {'keys': ['年代']}, {'keys': ['渡航歴', '渡航歴【注】']}, {'keys': ['症状']}, {'keys': ['性別']}, {'keys': ['職業']}, {'keys': ['備考', '備　考']}]
+        rows = [{'keys': ['番号']}, {'keys': ['年代']}, {'keys': ['渡航歴', '渡航歴【注】']}, {'keys': ['接触歴']}, {'keys': ['症状']}, {'keys': ['性別']}, {'keys': ['居住地']}, {'keys': ['発症日']}, {'keys': ['職業']}, {'keys': ['備考', '備　考']}]
         for i in range(len(rows)):
             rows[i]['data'] = pd.DataFrame(['-' for i in range(len(d))])
             for key in rows[i]['keys']:
@@ -75,7 +75,7 @@ for URL in URLS:
         objs.append(ds)
 
 
-pd.concat(objs).sort_values('num').to_csv(datetime.now().strftime("%Y-%m-%d-%H-%M") + 'result.csv', index=False)
+pd.concat(objs).sort_values('番号').to_csv(datetime.now().strftime("%Y-%m-%d-%H-%M") + 'result.csv', index=False)
     
 
 
