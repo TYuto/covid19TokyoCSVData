@@ -2,7 +2,8 @@ name: Python exec
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '0 * * * *'
+    - push:
 
 
 jobs:
@@ -24,7 +25,8 @@ jobs:
       run: |
         git config --local user.email "yuto.tamur@gmail.com"
         git config --local user.name "auto"
-        git commit -m "[actions]gen csv file" -a
+        git add .
+        git commit -m "[actions] gen csv file"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
