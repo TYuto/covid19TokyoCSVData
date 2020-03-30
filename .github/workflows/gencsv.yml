@@ -2,7 +2,7 @@ name: Python exec
 
 on:
   schedule:
-    - cron:  '0 */12 * * *'
+    - cron:  '0 0 * * 2025'
   push:
 
 
